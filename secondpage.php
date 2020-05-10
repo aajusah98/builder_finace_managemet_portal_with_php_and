@@ -122,7 +122,6 @@ include "db/logic.php";
                         $query="SELECT * FROM clint_data";
                         $result=mysqli_query($conn,$query);
                          ?>
-                         <?php echo $_GET['clint_id']; ?>
                            <select name="clint_id" class="form-control" >
                              <?php while ($row=mysqli_fetch_array($result)):;?>
                              <option value="<?php echo $row[0];?>" selected > <?php echo $row[7]; ?> </option>

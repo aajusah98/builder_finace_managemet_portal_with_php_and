@@ -43,6 +43,32 @@ else {
 }
 }
 
+
+if (isset($_POST['new_bnk_submit']))
+{
+$Bank_Name=$_POST['newbank'];
+$sql="INSERT INTO bank(Bank_Name)VALUES('{$Bank_Name}')";
+$result=mysqli_query($conn,$sql);
+
+if ($result) {
+  function function_alert($message) {
+
+      // Display the alert box
+      echo "<script>alert('$message');</script>";
+  }
+
+
+  // Function call
+  function_alert("Bank Is Added Successfully.....");
+  }
+
+  else {
+    echo "error";
+      echo mysqli_error($conn);
+  }
+
+}
+
 if (isset($_POST['office_submit'])) {
 
 $bank_id=$_POST['bank_id'];

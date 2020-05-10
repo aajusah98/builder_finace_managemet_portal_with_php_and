@@ -15,7 +15,7 @@ include "db/logic.php";
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   <link rel="stylesheet" href="fontawesome/css/all.min.css">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <style>
   body {
 
@@ -137,8 +137,22 @@ color: #0008ff;
 <section>
   <div class="container-fluid">
           <div class="panel panel-primary">
-       <div class="panel-heading"><p style="font-family: 'Martel'; text-align: center; font-weight: bold; font-size:25px; margin:5px; color:black ;">ALKA DESIGNERS AND BUILDERS</p></center></div>
+       <div class="panel-heading"><p id="test" style="font-family: 'Martel'; text-align: center; font-weight: bold; font-size:25px; margin:5px; color:black ;">ALKA DESIGNERS AND BUILDERS</p></center></div>
        <div class="panel-body">
+         <div id="bnkadddiv" hidden>
+           <form method="post" class="form-inline">
+             <input type="text" name="newbank" value="" placeholder="Enter Bank Name" class="form-control">
+             <button type="submit" name="new_bnk_submit" class="btn btn-primary mb-2">Submit</button>
+           </form>
+         </div>
+           <script>
+           $(document).ready(function(){
+           $("#test").click(function(){
+             $("#bnkadddiv").toggle();
+           });
+           });
+           </script>
+
          <!-- Left panel start form  -->
       <form  method="post"  id="cform">
      <fieldset id="bnkfield">
@@ -149,6 +163,8 @@ color: #0008ff;
                  <tr>
                    <th>
                      <label for="Party_Name" >Bank Name:</label>
+
+
                    </th>
                    <td>
                      <?php
@@ -161,6 +177,8 @@ color: #0008ff;
                          <option value="<?php echo $row[0]; ?>"><?php echo $row[1];?></option>
                              <?php endwhile;?>
                      </SELECT>
+
+                   </div>
                    </td>
                    <th>
 
@@ -377,5 +395,6 @@ color: #0008ff;
 </div>
 </div>
 
+</div>
 </body>
 </html>
