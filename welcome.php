@@ -1,56 +1,131 @@
 <!DOCTYPE html>
 <?php
-session_start();
-include "db/connect.php";
+include "db/logic.php";
 ?>
 <html lang="en">
 <head>
     <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Martel">
   <title>AlkaBuilder</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <link rel="stylesheet" href="fontawesome/css/all.min.css">
 
-<script>
-function pritdoc(q) {
+  <style>
+  body {
 
-  var w=document.getElementById(q).innerHTML;
-  document.body.innerHTML=w;
-  window.print();
+}
 
+  table,tr,th{
+
+border-top: 0px !important;
+
+font-family:'Lora';
+font-size:19px;
+color: #0008ff;
+font-weight: bold;
+
+
+
+  }
+  table,tr,td{
+
+    border-top: 0px !important;
+  }
+
+
+#clintfld
+
+{
+  border: 2px double #0008ff !important;
+  margin-top:20px;
+  margin-bottom: 20px;
+  xmin-width: 0;
+  padding: 10px;
+  position: relative;
+  border-radius:4px;
+  background-color:#f5f5f5;
+  padding-left:10px!important;
+}
+
+#bnkfield
+{
+  border: 2px double  #0008ff !important;
+  margin:0;
+  xmin-width: 0;
+  padding: 10px;
+  position: relative;
+  border-radius:4px;
+  background-color:#f5f5f5;
+  padding-left:10px!important;
+}
+#docfield
+{
+  border: 1px solid #0008ff !important;
+  margin:0;
+  xmin-width: 0;
+  padding: 10px;
+  margin: 20px;
+  position: relative;
+  border-radius:4px;
+  background-color:#f5f5f5;
+  padding-left:10px!important;
 }
 
 
 
-</script>
+#cth{
+
+  width:
+}
+
+  #clintTbl{
+  width:100%;
+  }
+
+
+
+.cr {
+    position: relative;
+    display: inline-block;
+    border: 1px solid #a9a9a9;
+    border-radius: .25em;
+    width: 1.9em;
+    height: 1.9em;
+    float: left;
+    margin-right: .5em;
+  }
+label
+{
+font-family:'Lora';
+font-size:17px;
+color: #0008ff;
+}
+
+
+  </style>
 
 </head>
 <body>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="welcome.php">ALKA DESIGNERS AND BUILDERS</a>
+      <a class="navbar-brand" href="welcome.php?bname=Nepal%20Investment%20Bank%20Ltd">ALKA DESIGNERS AND BUILDERS</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     </div>
-    <?php
-       $sql = "SELECT * FROM bank";
-        $result = $con->query($sql);
-      ?>
        <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Bank<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <?php while($row = mysqli_fetch_array($result)):;?>
-            <li value="<?php echo $row[0];?>"><a href="welcome.php?bname=<?php echo $row[1]; ?>"><?php echo $row[1];?></a></li>
-              <?php endwhile;?>
-        </ul>
+      <li class="active"><a href="welcome.php?bname=Nepal%20Investment%20Bank%20Ltd">Home</a></li>
+            <li><a href="secondpage.php">OFFICIAL FORM</a></li>
       </li>
-      <li><a href="index.php">Page 2</a></li>
+      <li><a href="users_display.php">PRINT DATA</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li style="color:red;"><?php echo $_SESSION["user"]; ?></li>
@@ -61,103 +136,246 @@ function pritdoc(q) {
 </nav>
 <section>
   <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-6" >
-        <div class="panel panel-primary">
-       <div class="panel-heading"><?php echo $_GET['bname']; ?></div>
-       <div class="panel-body" id="div1">
-            <!-- Left panel start form  -->
-             <form action="">
-               <div class="form-group">
-               <?php
-                  $sql = "SELECT * FROM bank";
-                   $result = $con->query($sql);
-                 ?>
-               <label for="Party_Name">Bank Name:</label>
-               <SELECT class="form-control">
-                 <?php while($row = mysqli_fetch_array($result)):;?>
-                    <!-- $_GET['bname']==$row[1] it will print selected  -->
-                   <option value="<?php echo $row[0]; ?>" <?php if ( $_GET['bname']==$row[1]): echo "selected";?><?php endif; ?>>
-                     <a href="welcome.php?bname=<?php echo $row[1]; ?>"><?php echo $row[1];?></option>
-                       <?php endwhile;?>
-               </SELECT>
-               </div>
-                <div class="form-group">
-                  <label for="Party_Name">Party Name:</label>
-                  <input type="text" class="form-control" placeholder="Party Name" name="PartyName">
-                </div>
-                <div class="form-group">
-                  <label for="Phone_No">Phone No:</label>
-                  <input  type="tel"  pattern="^\d{10}$" class="form-control"  placeholder="Phone No" name="Phone_No">
-                </div>
-                <div class="form-group">
-                  <label for="Temp_Address">Temporary Address:</label>
-                  <input type="text" name="Temp_Address" placeholder="Temporary Address" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label for="Temp_Address">Permanent Address:</label>
-                  <input type="text" name="Perm_Address" placeholder="Permanent Address" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label for="Temp_Address">Banker Name:</label>
-                  <input type="text" name="Banker_Name" placeholder="Banker Name" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label for="Phone_No">Banker Phone No:</label>
-                  <input  type="tel"  pattern="^\d{10}$" class="form-control"  placeholder="Banker Phone No" name="Bank_Phone_No">
-                </div>
-                <div class="form-group">
-                  <label for="Temp_Address">Bank Issue Date:</label>
-                  <input type="date" name="Bank_issue_date" placeholder="Bank Issue Date" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-              </form>
-        </div>
-        <button onclick="pritdoc('div1')">print</button>
-    </div>
-    </div>
-      <!-- Left panel form end -->
-    <div class="col-md-6 " >
           <div class="panel panel-primary">
-       <div class="panel-heading"><?php echo $_GET['bname']; ?></div>
+       <div class="panel-heading"><p style="font-family: 'Martel'; text-align: center; font-weight: bold; font-size:25px; margin:5px; color:black ;">ALKA DESIGNERS AND BUILDERS</p></center></div>
        <div class="panel-body">
-             <!-- right panel form start -->
-             <form action="">
-                <div class="form-group">
-                  <label for="Party_Name">Documents:</label>
-                  <br>
-                  <div class="form-check">
-                    <label class="checkbox-inline"><input type="checkbox" value="">Lal Purja (Land-ownership certificate)</label>
-                    <label class="checkbox-inline"><input type="checkbox" value="">Char Killa (Four boundary certificate)</label>
-                    <label class="checkbox-inline"><input type="checkbox" value="">Blueprint</label>
-                    <label class="checkbox-inline"><input type="checkbox" value="">Planning permit from concerned Town Development Committee</label>
-                    <label class="checkbox-inline"><input type="checkbox" value="">Approval from IEE or EIA or Ministry of Environment</label>
-                    <label class="checkbox-inline"><input type="checkbox" value=""> Approval from concerned division office</label>
-                    <label class="checkbox-inline"><input type="checkbox" value=""> Required certifi cates and Drawing approval from the local authority (VDC/Municipality)</label>
-                    <label class="checkbox-inline"><input type="checkbox" value="">Sale agreement</label>
-                    <label class="checkbox-inline"><input type="checkbox" value=""> Rajinama</label>
-                  </div>
-                  <br>
-                <div class="form-group">
-                  <label for="Phone_No">Bank Reference Letter Number:</label>
-                  <input  type="text"   class="form-control"  placeholder="Bank Reference Letter Number" name="Bank_name">
-                </div>
-                <div class="form-group">
-                  <label for="Temp_Address">Office Visited:</label>
-                  <input type="date" name="Temp_Address" placeholder="Temporary Address" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label for="Temp_Address">Advance Amount Recived:</label>
-                  <input type="number" name="Advance_Amount " placeholder="Advance Amount Recived" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-              </form>
-                 <!-- right panel form start -->
+         <!-- Left panel start form  -->
+      <form  method="post"  id="cform">
+     <fieldset id="bnkfield">
+          <p style="font-family: 'Martel'; text-align: center; font-weight: bold; font-size:20px; margin:5px; color:#ff4700;">BANK DETAILS</p>
+              <hr style="border-top: 1px  solid blue;  margin:0px;">
+       <div class="table-responsive">
+           <table class="table table-borderless">
+                 <tr>
+                   <th>
+                     <label for="Party_Name" >Bank Name:</label>
+                   </th>
+                   <td>
+                     <?php
+                        $sql = "SELECT * FROM bank";
+                         $result = $conn->query($sql);
+                       ?>
+                     <SELECT class="form-control" name="bankid">
+                       <?php while($row = mysqli_fetch_array($result)):;?>
+                          <!-- $_GET['bname']==$row[1] it will print selected  -->
+                         <option value="<?php echo $row[0]; ?>"><?php echo $row[1];?></option>
+                             <?php endwhile;?>
+                     </SELECT>
+                   </td>
+                   <th>
+
+                     <label for="Phone_No">Landline No:</label>
+                   </th>
+                   <td>
+                      <input  type="tel"  class="form-control"  placeholder="Bank Phone Number" name="bank_tel_num" required >
+                   </td>
+                 </tr>
+                 <tr>
+                   <th>
+                        <label for="Staff Name">Staff Name:</label>
+                   </th>
+                   <td>
+                     <input type="text" name="bank_staff_name" placeholder="Enter Banker Name"  class="form-control" required>
+                   </td>
+                   <th>
+                    <label for="Phone_No">Phone No:</label>
+                   </th>
+                   <td>
+                     <input  type="tel"  pattern="^\d{10}$" class="form-control"  placeholder="Banker Phone No" name="bank_staff_phone" required>
+                   </td>
+                 </tr>
+                 <tr>
+                   <th>
+                       <label for="Temp_Address">Bank Issue Date:</label>
+                   </th>
+                   <td  id="tddate" >
+                     <input type="date" name="bank_issue_date" placeholder="Bank Issue Date" class="form-control" required>
+                   </td>
+                   <th>
+                      <label for="Phone_No">Bank Ref Letter Number:</label>
+                   </th>
+                   <td  >
+                     <input  type="text"   class="form-control"  placeholder="Bank Reference Letter Number" name="bank_ref_num" required>
+                   </td>
+
+                 </tr>
+
+         </table>
+         </div>
+     </fieldset>
+
+     <fieldset id="clintfld">
+      <p style="font-family: 'Martel'; text-align: center; font-weight: bold; font-size:20px; margin:5px; color:#ff4700;">CLINT DETAILS</p>
+           <hr style="border-top: 1px  solid blue; margin:0px;">
+          <div class="table-responsive">
+             <table class="table table-borderless" id="clintTbl">
+               <tr>
+                 <th>
+                 <label for="Party_Name">Clint Name:</label>
+                 </th>
+                 <td>
+                   <input type="text" name="clint_name" placeholder="Clint Name" class="form-control" required>
+                 </td>
+                 <th>
+                     <label for="Party_Name">Owner Name:</label>
+                 </th>
+                 <td>
+                     <input type="text" name="owner_name" placeholder="Owner Name" class="form-control" required>
+                 </td>
+               </tr>
+
+               <tr>
+
+               </tr>
+
+               <tr>
+                 <th>
+                       <label for="Phone_No">Phone No:</label>
+                 </th>
+                 <td>
+                       <input  type="tel"  pattern="^\d{10}$" class="form-control"  placeholder="Phone No" name="clint_phone"required >
+                 </td>
+                 <th>
+                       <label for="Phone_No">LandLine No:</label>
+                 </th>
+                 <td>
+                       <input  type="tel"  class="form-control"  placeholder="Landline Number" name="clint_tel_num"required >
+                 </td>
+               </tr>
+               <tr>
+                 <th>
+                   <label for="Temp_Address">Temp Address:</label>
+                 </th>
+                 <td>
+                   <input type="text" name="temp_address" placeholder="Temporary Address" class="form-control" required>
+                 </td>
+                 <th>
+                   <label for="Temp_Address">Perm Address:</label>
+                 </th>
+                 <td>
+                    <input type="text" name="perm_address" placeholder="Permanent Address" class="form-control" required>
+                </td>
+              </tr>
+             </table>
+             <fieldset id="docfield">
+             <div class="form-group">
+              <h5><p style="font-family: 'Martel'; text-align: center; font-weight: bold; font-size:20px; margin:5px; color:#ff4700;">DOCUMENTS ANALYSIS:</p><h5>
+               <hr style="border-top: 1px dashed blue; margin:0px;">
+                <br>
+                <div class="table-responsive">
+                 <table class="table table-borderless" id="clintTb2">
+                    <tr>
+                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Citizenship</th>
+                      <td> <input type="checkbox" class="cr" value="Citizenship" class="custom-control-input" name="doc[]" required></td>
+                    </tr>
+                    <tr>
+                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Lal Purja (Land-ownership certificat</th>
+                      <td> <input type="checkbox" class="cr" value="Lal Purja (Land-ownership certificate)" class="custom-control-input" name="doc[]" required></td>
+                    </tr>
+
+                    <tr>
+                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Blueprint</th>
+                      <td><input type="checkbox" value="Blueprint" class="cr" name="doc[]" required></td>
+                    </tr>
+                    <tr>
+                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Trace Map</th>
+                      <td><input type="checkbox" value="Trace Map" class="cr" name="doc[]" required></td>
+                    </tr>
+                    <tr>
+                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Field Book</th>
+                      <td><input type="checkbox" value="Field Book" class="cr" name="doc[]" required></td>
+                    </tr>
+
+                    <tr>
+                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Char Killa (Four boundary certificate)</th>
+                      <td><input type="checkbox" value="Char Killa (Four boundary certificate)" class="cr" name="doc[]"></td>
+                    </tr>
+
+
+                    <tr>
+                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Road Clearance Certificate</th>
+                      <td><input type="checkbox" value="Road Clearance Certificate" class="cr"  name="doc[]"></td>
+                    </tr>
+
+
+                    <tr>
+                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Cadastre Map</th>
+                      <td><input type="checkbox" value="Cadastre Map" class="cr" name="doc[]"></td>
+                    </tr>
+                    <tr>
+
+                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Rajinama Certificate</th>
+                      <td><input type="checkbox" value="Rajinama" class="cr" name="doc[]"> </td>
+                    </tr>
+
+                    <tr>
+                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Ansh Bhanda Certificate</th>
+                      <td><input type="checkbox" value="Ansh Bhanda Certificate" class="cr" name="doc[]"></td>
+                    </tr>
+
+                    <tr>
+                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Gharelu Certificate</th>
+                      <td><input type="checkbox" value="Gharelu Certificate" class="cr" name="doc[]"></td>
+                    </tr>
+                    <tr>
+                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Transfer Certificate</th>
+                      <td><input type="checkbox" value="Transfer Certificate" class="cr" name="doc[]"></td>
+                    </tr>
+
+                    <tr>
+                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Bachus Patra</th>
+                      <td><input type="checkbox" value="Bachus Patra" class="cr" name="doc[]"></td>
+                    </tr>
+
+                    <tr>
+                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>PAN Certificate</th>
+                      <td><input type="checkbox" value="PAN Certificate" class="cr" name="doc[]"></td>
+                    </tr>
+                    <tr>
+                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Registrar Certificate</th>
+                      <td><input type="checkbox" value="PAN Certificate" class="cr" name="doc[]"></td>
+                    </tr>
+                    <tr>
+                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Building Map (VDC/Municipality)</th>
+                      <td><input type="checkbox" value="Building Map(VDC/Municipality)" class="cr" name="doc[]"></td>
+                    </tr>
+
+                    <tr>
+                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Building Completion Certificate (VDC/Municipality)</th>
+                      <td><input type="checkbox" value="Building Completion Certificate(VDC/Municipality)" class="cr" name="doc[]"></td>
+                    </tr>
+
+                 </table>
+
+               </div>
+             </div>
+                </fieldset>
+                <div class="table-responsive">
+
+                 <table class="table table-borderless" id="clintTb2">
+ <tr>
+   <th><label>Advance Amount (From Clint)</label></th>
+   <td ><input type="number" name="advance_amount" placeholder="Advance Amount Recived" class="form-control" required></td>
+   <th><label>Advance Reciver Name:</label></th>
+   <td ><input type="text" name="advance_reciver_name" placeholder="Enter Advance Reciver Name" class="form-control" required></td>
+ </tr>
+
+ <tr>
+   <th><label>Form Filled By:</label></th>
+   <td ><input type="text" name="form_filled_by" placeholder="Enter Your Name" class="form-control" required></td>
+ </tr>
+</table>
+     </fieldset>
+      <div class="col text-center">
+             <button type="submit" name="clint_submit" style="background-color: #00f300;" class="btn btn-default"><p style="font-family: 'Martel'; text-align: center; font-weight: bold; font-size:20px; margin:5px; color:blue ;">Submit</p></button>
+
+       </div>
+           </form>
     </div>
     </div>
     </div>
-  </div>
 </div>
-</section>
+</div>
+
 </body>
 </html>
