@@ -3,7 +3,7 @@ session_start();
 include 'connect.php';
 if (isset($_POST['clint_submit'])) {
 $Bankid=$_POST['bankid'];
-$bank_tel_num=$_POST['bank_tel_num'];
+$bank_branch=$_POST['bank_tel_num'];
 $bank_staff_name=$_POST['bank_staff_name'];
 $bank_staff_phone=$_POST['bank_staff_phone'];
 $bank_issue_date=$_POST['bank_issue_date'];
@@ -21,7 +21,7 @@ $advance_reciver_name=$_POST['advance_reciver_name'];
 $form_filled_by=$_POST['form_filled_by'];
 
 
-$sql="INSERT INTO clint_data (bank_id,bank_tel_num,bank_staff_name,bank_staff_phone,bank_issue_date,bank_ref_num,clint_name,owner_name,clint_phone,clint_tel_num,temp_address,perm_address,docs,advance_amount,advance_reciver_name,form_filled_by)VALUES('{$Bankid}','{$bank_tel_num}','{$bank_staff_name}','{$bank_staff_phone}','{$bank_issue_date}','{$bank_ref_num}','{$clint_name}','{$owner_name}','{$clint_phone}','{$clint_tel_num}','{$temp_address}','{$perm_address}','{$comma_separated_doc}','{$advance_amount}','{$advance_reciver_name}','{$form_filled_by}')";
+$sql="INSERT INTO clint_data (bank_id,	bank_branch,bank_staff_name,bank_staff_phone,bank_issue_date,bank_ref_num,clint_name,owner_name,clint_phone,clint_tel_num,temp_address,perm_address,docs,advance_amount,advance_reciver_name,form_filled_by)VALUES('{$Bankid}','{$bank_branch}','{$bank_staff_name}','{$bank_staff_phone}','{$bank_issue_date}','{$bank_ref_num}','{$clint_name}','{$owner_name}','{$clint_phone}','{$clint_tel_num}','{$temp_address}','{$perm_address}','{$comma_separated_doc}','{$advance_amount}','{$advance_reciver_name}','{$form_filled_by}')";
 $result=mysqli_query($conn,$sql);
 
 
@@ -84,8 +84,9 @@ $bill_num=$_POST['bill_num'];
 $payment_rec_by=$_POST['payment_rec_by'];
 $payment_method=$_POST['payment_method'];
 $form_filled_by=$_POST['form_filled_by'];
+$field_visitor=$_POST['field_visitor'];
 
-$sql="INSERT INTO office_data (bank_id,clint_id,adb_ref_no,adb_visited_date,ini_rep_sent_date,ini_rep_pre_by,final_rep_pre_date,final_rep_pep_by,final_amount,bill_num,payment_rec_by,payment_method,form_filled_by) VALUES ('{$bank_id}','{$clint_id}','{$adb_ref_no}','{$adb_visited_date}','{$ini_rep_sent_date}','{$ini_rep_pre_by}','{$final_rep_pre_date}','{$final_rep_pep_by}','{$final_amount}','{$bill_num}','{$payment_rec_by}','{$payment_method}','{$form_filled_by}')";
+$sql="INSERT INTO office_data (bank_id,clint_id,adb_ref_no,field_visitor,adb_visited_date,ini_rep_sent_date,ini_rep_pre_by,final_rep_pre_date,final_rep_pep_by,final_amount,bill_num,payment_rec_by,payment_method,form_filled_by) VALUES ('{$bank_id}','{$clint_id}','{$adb_ref_no}','{$field_visitor}','{$adb_visited_date}','{$ini_rep_sent_date}','{$ini_rep_pre_by}','{$final_rep_pre_date}','{$final_rep_pep_by}','{$final_amount}','{$bill_num}','{$payment_rec_by}','{$payment_method}','{$form_filled_by}')";
 $result=mysqli_query($conn,$sql);
 if ($result) {
   function function_alert($message) {
@@ -122,7 +123,7 @@ $pass=$_POST['pass'];
 $query = mysqli_query($conn, "SELECT * FROM admin WHERE password='$pass' AND username='$user'");
 $rows = mysqli_num_rows($query);
 if($rows == 1){
-  $_SESSION["user"]=$user;
+$_SESSION["ak"]=$user;
 header("Location: welcome.php?bname=Nabil Bank Ltd"); // Redirecting to other page
 }
 else
@@ -132,4 +133,6 @@ $error = "Username of Password is Invalid";
 mysqli_close($conn); // Closing connection
 }
 }
+
+
 ?>

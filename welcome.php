@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
-include "db/logic.php";
+session_start();
+include "db/connect.php";
 ?>
 <html lang="en">
 <head>
@@ -125,19 +126,22 @@ color: #0008ff;
       <li class="active"><a href="welcome.php?bname=Nepal%20Investment%20Bank%20Ltd">Home</a></li>
             <li><a href="secondpage.php">OFFICIAL FORM</a></li>
       </li>
-      <li><a href="users_display.php">PRINT DATA</a></li>
+      <li><a href="users_display.php">PRINT INITIAL DATA</a></li>
+        <li><a href="final_official_display.php">PRINT FINAL DATA</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li style="color:red;"><?php echo $_SESSION["user"]; ?></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      <li style="color:red; font-size: 15px; font-family: 'Martel'; margin-top:19px;text-align:center; text-transform:uppercase;"><?php
+        echo 'WELCOME '.'   '.$_SESSION["ak"];
+        ?></li>
+      <li><a href="logout.php?logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a></button> </li>
     </ul>
-      </div>
+  </div><p></p>
   </div>
 </nav>
 <section>
   <div class="container-fluid">
           <div class="panel panel-primary">
-       <div class="panel-heading"><p id="test" style="font-family: 'Martel'; text-align: center; font-weight: bold; font-size:25px; margin:5px; color:black ;">ALKA DESIGNERS AND BUILDERS</p></center></div>
+       <div class="panel-heading"><p id="test" style="font-family: 'Martel'; text-align: center; font-weight: bold; font-size:25px; margin:5px; color:black ;">ALKA DESIGNERS AND BUILDERS (OFFICIAL ENTRY)</p></center></div>
        <div class="panel-body">
          <div id="bnkadddiv" hidden>
            <form method="post" class="form-inline">
@@ -182,10 +186,10 @@ color: #0008ff;
                    </td>
                    <th>
 
-                     <label for="Phone_No">Landline No:</label>
+                     <label for="Phone_No">Branch:</label>
                    </th>
                    <td>
-                      <input  type="tel"  class="form-control"  placeholder="Bank Phone Number" name="bank_tel_num" required >
+                      <input  type="tel"  class="form-control"  placeholder=" Enter Branch Name" name="bank_tel_num" required >
                    </td>
                  </tr>
                  <tr>
@@ -196,7 +200,7 @@ color: #0008ff;
                      <input type="text" name="bank_staff_name" placeholder="Enter Banker Name"  class="form-control" required>
                    </td>
                    <th>
-                    <label for="Phone_No">Phone No:</label>
+                    <label for="Phone_No">Phone / Cell No. :</label>
                    </th>
                    <td>
                      <input  type="tel"  pattern="^\d{10}$" class="form-control"  placeholder="Banker Phone No" name="bank_staff_phone" required>
@@ -283,29 +287,29 @@ color: #0008ff;
                 <div class="table-responsive">
                  <table class="table table-borderless" id="clintTb2">
                     <tr>
-                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Citizenship</th>
+                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;" required></i>Citizenship</th>
                       <td> <input type="checkbox" class="cr" value="Citizenship" class="custom-control-input" name="doc[]" required></td>
                     </tr>
                     <tr>
-                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Lal Purja (Land-ownership certificat</th>
+                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;" required></i>Lal Purja (Land-ownership certificat)</th>
                       <td> <input type="checkbox" class="cr" value="Lal Purja (Land-ownership certificate)" class="custom-control-input" name="doc[]" required></td>
                     </tr>
 
                     <tr>
-                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Blueprint</th>
+                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;" required></i>Blueprint (From Bank Ref No.)</th>
                       <td><input type="checkbox" value="Blueprint" class="cr" name="doc[]" required></td>
                     </tr>
                     <tr>
-                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Trace Map</th>
+                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;" required></i>Trace Map (From Bank Ref No.)</th>
                       <td><input type="checkbox" value="Trace Map" class="cr" name="doc[]" required></td>
                     </tr>
                     <tr>
-                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Field Book</th>
+                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Field Book Uttar</th>
                       <td><input type="checkbox" value="Field Book" class="cr" name="doc[]" required></td>
                     </tr>
 
                     <tr>
-                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Char Killa (Four boundary certificate)</th>
+                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;" required></i>Char Killa (Four boundary certificate from VDC/Municipality)</th>
                       <td><input type="checkbox" value="Char Killa (Four boundary certificate)" class="cr" name="doc[]"></td>
                     </tr>
 
@@ -341,7 +345,7 @@ color: #0008ff;
                     </tr>
 
                     <tr>
-                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Bachus Patra</th>
+                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Bakas Patra</th>
                       <td><input type="checkbox" value="Bachus Patra" class="cr" name="doc[]"></td>
                     </tr>
 

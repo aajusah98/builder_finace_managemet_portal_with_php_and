@@ -1,5 +1,6 @@
 <?php
-include "db/logic.php";
+session_start();
+include "db/connect.php";
 ?>
 
 <!DOCTYPE html>
@@ -77,11 +78,14 @@ include "db/logic.php";
           <li class="active"><a href="welcome.php?bname=Nepal%20Investment%20Bank%20Ltd">Home</a></li>
                 <li><a href="secondpage.php">OFFICIAL FORM</a></li>
           </li>
-          <li><a href="users_display.php">PRINT DATA</a></li>
+          <li><a href="users_display.php">PRINT INITIAL DATA</a></li>
+            <li><a href="final_official_display.php">PRINT FINAL DATA</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li style="color:red;"><?php echo $_SESSION["user"]; ?></li>
-          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          <li style="color:red; font-size: 15px; font-family: 'Martel'; margin-top:19px;text-align:center; text-transform:uppercase;"><?php
+            echo 'WELCOME '.'   '.$_SESSION["ak"];
+            ?></li>
+          <li><a href="logout.php?logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a></button> </li>
         </ul>
           </div>
       </div>
@@ -90,7 +94,7 @@ include "db/logic.php";
 
 <div class="container-fluid">
 <div class="panel panel-primary">
-  <div class="panel-heading"><p style="font-family: 'Martel'; text-align: center; font-weight: bold; font-size:25px; margin:5px; color:black ;">ALKA DESIGNERS AND BUILDERS</p></div>
+  <div class="panel-heading"><p style="font-family: 'Martel'; text-align: center; font-weight: bold; font-size:25px; margin:5px; color:black ;">ALKA DESIGNERS AND BUILDERS (OFFICIAL FINAL)</p></div>
     <div class="panel-body">
       <form method="post">
         <fieldset id="officefld">
@@ -115,7 +119,7 @@ include "db/logic.php";
                         </SELECT>
                       </td>
                       <th>
-                        <label >CLINT NAME:</label>
+                        <label >Clint Name:</label>
                       </th>
                       <td>
                         <?php
@@ -130,12 +134,14 @@ include "db/logic.php";
                       </td>
                     </tr>
                     <tr>
+
                       <th>
-                           <label>ADB Ref No(Take From Register):</label>
+                           <label>Field Visited By :</label>
                       </th>
                       <td>
-                        <input type="text" name="adb_ref_no" placeholder="ADB Reference Number" class="form-control">
+                        <input type="text" name="field_visitor" placeholder="Enter Field Visiter Name"  class="form-control">
                       </td>
+
                       <th>
                        <label>ADB Visited Date:</label>
                       </th>
@@ -206,6 +212,12 @@ include "db/logic.php";
                    <tr>
                      <th><label>Form Fille By:</label></th>
                      <td ><input type="text" name="form_filled_by" placeholder="Enter Your Name" class="form-control" required></td>
+                     <th>
+                          <label>ADB Ref No(Take From Register):</label>
+                     </th>
+                     <td>
+                       <input type="text" name="adb_ref_no" placeholder="ADB Reference Number" class="form-control">
+                     </td>
                    </tr>
                     </table>
                     </div>
