@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <?php
-session_start();
-include "db/connect.php";
-
+include "db/logic.php";
 ?>
 <html lang="en" dir="ltr">
   <head>
@@ -12,12 +10,17 @@ include "db/connect.php";
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Martel">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Martel">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+      <script type="text/javascript" src="bootstrap/jquery-3.5.1.min.js"></script>
 <script>
 function clint(d) {
   var d=document.getElementById(d).innerHTML;
   document.body.innerHTML=d;
   window.print();
+  window.location = "./final_official_display.php";
 }
 
 </script>
@@ -123,9 +126,7 @@ border-top: 0px !important;
             <li><a href="final_official_display.php">PRINT FINAL DATA</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li style="color:red; font-size: 15px; font-family: 'Martel'; margin-top:19px;text-align:center; text-transform:uppercase;"><?php
-              echo 'WELCOME '.'   '.$_SESSION["ak"];
-            ?></li>
+          <li style="color:red; font-size: 15px; font-family: 'Martel'; margin-top:19px;text-align:center; text-transform:uppercase;">WELCOME TO ADB</li>
           <li><a href="logout.php?logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a></button> </li>
         </ul>
           </div>
@@ -258,10 +259,38 @@ border-top: 0px !important;
                          </tr>
                          <tr>
                            <th>
-                           <label for="Party_Name">Final Payment :</label>
+                           <label for="Party_Name">Total Amount :</label>
                            </th>
                            <td>
-                             <?php echo $arr['final_amount']; ?>
+                             <?php echo $arr['total_amount']; ?>
+                           </td>
+                           <th>
+                           <label for="Party_Name">Due Amount :</label>
+                           </th>
+                           <td>
+                             <?php echo $arr['due_amount']; ?>
+                           </td>
+                         </tr>
+                         <tr>
+                           <th>
+                           <label for="Party_Name">Discount Amount</label>
+                           </th>
+                           <td>
+                             <?php echo $arr['discount_amount']; ?>
+                           </td>
+                           <th>
+                           <label for="Party_Name">Discounted By</label>
+                           </th>
+                           <td>
+                             <?php echo $arr['dicounter_name']; ?>
+                           </td>
+                         </tr>
+                         <tr>
+                           <th>
+                           <label for="Party_Name">Final Amount Recived</label>
+                           </th>
+                           <td>
+                             <?php echo $arr['final_payment_recived']; ?>
                            </td>
                            <th>
                            <label for="Party_Name">Bill Number :</label>
@@ -269,6 +298,7 @@ border-top: 0px !important;
                            <td>
                              <?php echo $arr['bill_num']; ?>
                            </td>
+
                          </tr>
 
 

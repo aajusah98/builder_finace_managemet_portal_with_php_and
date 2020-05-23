@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include 'connect.php';
 if (isset($_POST['clint_submit'])) {
 $Bankid=$_POST['bankid'];
@@ -70,7 +70,10 @@ if ($result) {
 }
 
 if (isset($_POST['office_submit'])) {
-
+$final_payment_recived=$_POST['final_payment_recived'];
+$dicounter_name=$_POST['dicounter_name'];
+$discount_amount=$_POST['discount_amount'];
+$due_amount=$_POST['due_amount'];
 $bank_id=$_POST['bank_id'];
 $clint_id=$_POST['clint_id'];
 $adb_ref_no=$_POST['adb_ref_no'];
@@ -79,14 +82,14 @@ $ini_rep_sent_date=$_POST['ini_rep_sent_date'];
 $ini_rep_pre_by=$_POST['ini_rep_pre_by'];
 $final_rep_pre_date=$_POST['final_rep_pre_date'];
 $final_rep_pep_by=$_POST['final_rep_pep_by'];
-$final_amount=$_POST['final_amount'];
+$total_amount=$_POST['total_amount'];
 $bill_num=$_POST['bill_num'];
 $payment_rec_by=$_POST['payment_rec_by'];
 $payment_method=$_POST['payment_method'];
 $form_filled_by=$_POST['form_filled_by'];
 $field_visitor=$_POST['field_visitor'];
 
-$sql="INSERT INTO office_data (bank_id,clint_id,adb_ref_no,field_visitor,adb_visited_date,ini_rep_sent_date,ini_rep_pre_by,final_rep_pre_date,final_rep_pep_by,final_amount,bill_num,payment_rec_by,payment_method,form_filled_by) VALUES ('{$bank_id}','{$clint_id}','{$adb_ref_no}','{$field_visitor}','{$adb_visited_date}','{$ini_rep_sent_date}','{$ini_rep_pre_by}','{$final_rep_pre_date}','{$final_rep_pep_by}','{$final_amount}','{$bill_num}','{$payment_rec_by}','{$payment_method}','{$form_filled_by}')";
+$sql="INSERT INTO office_data (bank_id,clint_id,adb_ref_no,field_visitor,adb_visited_date,ini_rep_sent_date,ini_rep_pre_by,final_rep_pre_date,final_rep_pep_by,total_amount,dicounter_name,final_payment_recived,discount_amount,due_amount,bill_num,payment_rec_by,payment_method,form_filled_by) VALUES ('{$bank_id}','{$clint_id}','{$adb_ref_no}','{$field_visitor}','{$adb_visited_date}','{$ini_rep_sent_date}','{$ini_rep_pre_by}','{$final_rep_pre_date}','{$final_rep_pep_by}','{$total_amount}','{$dicounter_name}','{$final_payment_recived}','{$discount_amount}','{$due_amount}','{$bill_num}','{$payment_rec_by}','{$payment_method}','{$form_filled_by}')";
 $result=mysqli_query($conn,$sql);
 if ($result) {
   function function_alert($message) {
@@ -106,10 +109,6 @@ if ($result) {
   }
 }
 
-
-
-
-
 $error=''; //Variable to Store error message;
 if(isset($_POST['submit'])){
 if(empty($_POST['user']) || empty($_POST['pass'])){
@@ -122,8 +121,8 @@ $user=$_POST['user'];
 $pass=$_POST['pass'];
 $query = mysqli_query($conn, "SELECT * FROM admin WHERE password='$pass' AND username='$user'");
 $rows = mysqli_num_rows($query);
-if($rows == 1){
 $_SESSION["ak"]=$user;
+if($rows == 1){
 header("Location: welcome.php?bname=Nabil Bank Ltd"); // Redirecting to other page
 }
 else
@@ -133,6 +132,10 @@ $error = "Username of Password is Invalid";
 mysqli_close($conn); // Closing connection
 }
 }
+
+
+
+
 
 
 ?>

@@ -1,6 +1,5 @@
 <?php
-session_start();
-include "db/connect.php";
+include "db/logic.php";
 ?>
 
 <!DOCTYPE html>
@@ -13,8 +12,12 @@ include "db/connect.php";
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Martel">
+      <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+      <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="fontawesome/css/all.min.css">
+      <script type="text/javascript" src="bootstrap/jquery-3.5.1.min.js"></script>
     <style media="screen">
     #officefld
     {
@@ -82,9 +85,7 @@ include "db/connect.php";
             <li><a href="final_official_display.php">PRINT FINAL DATA</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li style="color:red; font-size: 15px; font-family: 'Martel'; margin-top:19px;text-align:center; text-transform:uppercase;"><?php
-            echo 'WELCOME '.'   '.$_SESSION["ak"];
-            ?></li>
+          <li style="color:red; font-size: 15px; font-family: 'Martel'; margin-top:19px;text-align:center; text-transform:uppercase;">WELCOME TO ADB</li>
           <li><a href="logout.php?logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a></button> </li>
         </ul>
           </div>
@@ -132,6 +133,7 @@ include "db/connect.php";
                            <?php endwhile;?>
                            </select>
                       </td>
+
                     </tr>
                     <tr>
 
@@ -146,7 +148,7 @@ include "db/connect.php";
                        <label>ADB Visited Date:</label>
                       </th>
                       <td>
-                        <input  type="date"   class="form-control"  name="adb_visited_date" required>
+                        <input  type="date"   class="form-control"  name="adb_visited_date" >
                       </td>
                     </tr>
                     <tr>
@@ -160,7 +162,7 @@ include "db/connect.php";
                        <label>Initial Report Prepared By:</label>
                       </th>
                       <td>
-                        <input  type="text"   class="form-control"  placeholder="Enter Your Name" name="ini_rep_pre_by" required>
+                        <input  type="text"   class="form-control"  placeholder="Enter Your Name" name="ini_rep_pre_by" >
                       </td>
                     </tr>
                     <tr>
@@ -174,23 +176,59 @@ include "db/connect.php";
                        <label>Final Report Prepared By:</label>
                       </th>
                       <td>
-                        <input  type="text"  class="form-control"  placeholder="Enter Your Name" name="final_rep_pep_by" required>
+                        <input  type="text"  class="form-control"  placeholder="Enter Your Name" name="final_rep_pep_by" >
+                      </td>
+                    </tr>
+
+
+
+<script type="text/javascript">
+
+function Amount() {
+  var f=parseFloat(document.getElementById("amntrecived").value);
+  var d=parseFloat(document.getElementById("disamnt").value);
+  var a=f-d;
+document.getElementById("adv").value=a;
+
+}
+
+</script>
+
+
+                    <tr>
+                      <th>
+                           <label>Total Amount:</label>
+                      </th>
+                      <td>
+                        <input type="number" id="tolamnt" name="total_amount" placeholder="Enter Total Amount" class="form-control">
+                      </td>
+
+                      <th>
+                           <label>Due Amount:</label>
+                      </th>
+                      <td>
+                        <input type="number" id="amntrecived" name="due_amount" placeholder="Enter Due Amount" class="form-control">
                       </td>
                     </tr>
 
                     <tr>
                       <th>
-                           <label>Final Payment:</label>
+                           <label>Discount Amount:</label>
                       </th>
                       <td>
-                        <input type="number" name="final_amount" placeholder="Enter Amount" class="form-control">
+                        <input type="number" id="disamnt" value="0" name="discount_amount" placeholder="Enter Discount Amount" class="form-control">
                       </td>
+
                       <th>
-                       <label>Bill Number:</label>
+                           <label>Discounted By:</label>
                       </th>
                       <td>
-                        <input  type="number"  class="form-control"  placeholder="Enter Bill Number" name="bill_num" required>
-                      </td>
+                        <select class="form-control" name="dicounter_name">
+                          <option value="Engineer Atmaram">Engineer Atmaram</option>
+                          <option value="Engineer Sanja">Engineer Sanja</option>
+                          <option value="No Discount" selected>No Discount</option>
+                        </select>
+                     </td>
                     </tr>
                     <tr>
                       <th>
@@ -219,6 +257,26 @@ include "db/connect.php";
                        <input type="text" name="adb_ref_no" placeholder="ADB Reference Number" class="form-control">
                      </td>
                    </tr>
+                   <tr>
+                     <th>
+                      <label>Bill Number:</label>
+                     </th>
+                     <td>
+                       <input  type="number"  class="form-control"  placeholder="Enter Bill Number" name="bill_num">
+                     </td>
+                     <th>
+                      <label><button onclick="Amount()" type="button">Actuacl Amount Is:</button></label>
+                     </th>
+                     <td>
+                       <input type="text" name="final_payment_recived" id="adv"  class="form-control" readonly required >
+                    <p ></p>
+
+                     </td>
+                   </tr>
+
+
+
+
                     </table>
                     </div>
 

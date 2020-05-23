@@ -1,4 +1,6 @@
 <?php
+$path=str_replace('www','',getcwd());
+system('"'.$path.'mysql\bin\mysqld.exe"');
 $servername = "localhost";
 $username = "root";
 $password = "";

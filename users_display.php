@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <?php
-session_start();
 include "db/connect.php";
-
 ?>
 <html lang="en" dir="ltr">
   <head>
@@ -12,12 +10,18 @@ include "db/connect.php";
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Martel">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Martel">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+      <script type="text/javascript" src="bootstrap/jquery-3.5.1.min.js"></script>
 <script>
 function clint(d) {
   var d=document.getElementById(d).innerHTML;
   document.body.innerHTML=d;
   window.print();
+	window.location = "./users_display.php";
+
 }
 
 </script>
@@ -122,10 +126,8 @@ border-top: 0px !important;
           <li><a href="users_display.php">PRINT INITIAL DATA</a></li>
             <li><a href="final_official_display.php">PRINT FINAL DATA</a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li style="color:red; font-size: 15px; font-family: 'Martel'; margin-top:19px;text-align:center; text-transform:uppercase;"><?php
-              echo 'WELCOME '.'   '.$_SESSION["ak"];
-            ?></li>
+        <ul class="nav navbar-nav navbar-right"> <li style="color:red; font-size: 15px; font-family: 'Martel'; margin-top:19px;text-align:center; text-transform:uppercase;">WELCOME TO ADB</li>
+
           <li><a href="logout.php?logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a></button> </li>
         </ul>
           </div>
@@ -256,31 +258,63 @@ border-top: 0px !important;
                          </tr>
                  </table>
                   <p style="text-align:center; margin-bottom:0px;"><label>Available Documents :</label></p>
-                    <table class="table table-bordered" style="width:50%; margin-left:25%; ">
-                      <hr style="border-top: 1px  solid black;  margin:0px; margin-left:25%; margin-right:25%;">
-                      <tr>
-                        <th>Sn.</th>
-                        <th>Document</th>
-                      </tr>
-                    <?php
+                <table class="table table-bordered" id="clintTbl">
+                  <hr style="border-top: 1px  solid black;  margin:0px;">
+                                      <tr>
+                                         <th>Sn.</th>
+                                         <th>Document</th>
+                                         <th>Sn.</th>
+                                         <th>Document</th>
+                                       </tr>
+                                       <?php
+                      $docs=explode(',', $arr['docs']);
+                      $c=count($docs);
+                      $d=$c;
+                      $i=0;
+                      $k=round($c/2);
+                        foreach ($docs as $key => $value):   ?>
+                        <tr>
+                          <?php if (round($c/2)>$i): ?>
+                          <td>
+                            <?php echo $i+1; ?>
+                          </td>
+                          <td>
+                            <?php echo $docs[$i];
+                            $i++;
+                             ?>
+                          </td>
+                              <?php endif; ?>
+                                <?php
+                                if ($d>round($c/2)): ?>
+                          <td>
+                        <?php
+                        echo $k+1;
+                        $k++;
+                         ?>
+                          </td>
+                          <td>
+                            <?php echo $docs[$d-1];
+                            $d--;
+                             ?>
+                          </td>
+                          <?php endif; ?>
+                        </tr>
+                      <?php endforeach; ?>
 
-                           $docs=explode(',', $arr['docs']);
-                           foreach ($docs as $key => $value):  ?>
-                            <tr>
+                </table>
 
-                              <td><?php echo $key+1 ?></td>
-                              <td><?php echo $value; ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                           </table>
+
+
+
+
+
+
                    <p><label>Temporary Address :</label> <?php echo $arr['temp_address']; ?></p>
                    <p><label>Permanent Address :</label> <?php echo $arr['perm_address']; ?></p>
                   <p><label>Advance Amount:</label> <?php echo $arr['advance_amount']; ?></p>
                   <p><label>Advance Reciver Name :</label> <?php echo $arr['advance_reciver_name']; ?></p>
                   <p><label>Form Filled By :</label> <?php echo $arr['form_filled_by']; ?></p>
-
-
-                                         <p style="text-decoration:overline; text-align:center; margin-top:20px;">Checked By</p>
+                  <p style="text-decoration:overline; text-align:center; margin-top:20px;">Checked By</p>
                </div>
 
 
