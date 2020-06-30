@@ -16,14 +16,13 @@ include "db/connect.php";
     <link rel="stylesheet" href="fontawesome/css/all.min.css">
       <script type="text/javascript" src="bootstrap/jquery-3.5.1.min.js"></script>
 <script>
-function clint(d) {
+function client(d) {
   var d=document.getElementById(d).innerHTML;
   document.body.innerHTML=d;
   window.print();
 	window.location = "./users_display.php";
 
 }
-
 </script>
 <style media="screen">
 
@@ -106,86 +105,157 @@ border-top: 0px !important;
   border: 1px solid #555;
 
 }
+section{
+  margin-top: 5%;
+}
 </style>
 
   </head>
   <body>
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
           <a class="navbar-brand" href="welcome.php?bname=Nepal%20Investment%20Bank%20Ltd">ALKA DESIGNERS AND BUILDERS</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
         </div>
-           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="welcome.php?bname=Nepal%20Investment%20Bank%20Ltd">Home</a></li>
-                <li><a href="secondpage.php">OFFICIAL FORM</a></li>
-          </li>
-          <li><a href="users_display.php">PRINT INITIAL DATA</a></li>
-            <li><a href="final_official_display.php">PRINT FINAL DATA</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right"> <li style="color:red; font-size: 15px; font-family: 'Martel'; margin-top:19px;text-align:center; text-transform:uppercase;">WELCOME TO ADB</li>
 
-          <li><a href="logout.php?logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a></button> </li>
-        </ul>
-          </div>
-      </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="welcome.php?bname=Nepal%20Investment%20Bank%20Ltd"><span class="glyphicon glyphicon-list-alt" > IDE</span></a></li>
+            <li><a href="secondpage.php"><span class="glyphicon glyphicon-list-alt" > FDE</span></a></li>
+              <li class="active"><a href="users_display.php"><span class="glyphicon glyphicon-print"> PID</span></a></li>
+              <li><a href="final_official_display.php"><span class="glyphicon glyphicon-print"> PFD</span></a></li>
+              <li><a href="Update.php"><span  class="glyphicon glyphicon-pencil"> UPDATE</span></a></li>
+                  <li><a href="statement.php"><span  class="glyphicon glyphicon-th-list">  STATEMENT</span></a></li>
+
+            <!-- <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DATA ENTRY <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="welcome.php?bname=Nepal%20Investment%20Bank%20Ltd">INITIAL DATA ENTRY</a></li>
+                <li><a href="secondpage.php">FINAL DATA ENTRY</a></li>
+              </ul>
+            </li> -->
+            <ul class="nav navbar-nav navbar-right" style="margin-left:100px;">
+              <li style="color:red; font-size: 15px; font-family: 'Martel'; margin-top:19px;text-align:center; text-transform:uppercase;">WELCOME TO ADB</li>
+              <li><a href="logout.php?logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a></button> </li>
+            </ul>
+
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
     </nav>
 
+    <script>
+    $(document).ready(function(){
+        $("#client").change(function(){
+            var selectedCountry = $(this).children("option:selected").val();
+        });
+    });
+
+
+
+   //
+   //  $(function () {
+   //    $("#client").change(function () {
+   //       var selectedText = $("#client").find("option:selected").text();
+   //       var selectedValue = $("#client").val();
+   // document.location='users_display.php?id='+selectedValue;
+   //     alert(selectedValuey);
+   //    });
+   //  });
+
+    </script>
+
+    <section>
 <div class="container-fluid">
 <div class="panel panel-primary">
-  <div class="panel-heading"> <label for="ClintName">SELECT CLINT NAME FOR PRINTING OFFICIAL ENTRY</label>  </div>
+  <div class="panel-heading"> <label for="ClientName">CLINT </label>  </div>
     <div class="panel-body">
-      <form  method="post">
-        <div class="form-group">
-          <?php
-          $query="SELECT * FROM clint_data";
-          $result=mysqli_query($conn,$query);
-           ?>
-          <select name="cl" class="form-control">
-            <?php while ($row=mysqli_fetch_array($result)):;?>
-            <option value="<?php echo $row[0];?>" > <?php echo $row[7]; ?> </option>
-          <?php endwhile;?>
-          </select>
-        </div>
-        <button type="submit" value="hh" name="de" class="btn btn-default"> GET CLINT DATA</button>
-      </form>
-    </div>
-</div>
-</div>
+<table class="table">
+  <tr>
+    <td>
+            <form  method="post">
+              <div class="form-group">
+                <?php
+                $query="SELECT * FROM client_data";
+                $result=mysqli_query($conn,$query);
+                 ?>
+                 <!-- <script type="text/javascript">
 
-<!-- fetching_clint_details_from_database -->
+                      $(function () {
+                        $("#data").click(function () {
+                           var selectedText = $("#client").find("option:selected").text();
+                           var selectedValue = $("#client").val();
+                           document.location='users_display.php?id='+selectedValue;
+                        });
+                      });
+                 </script> -->
+                <select name="cl"  class="form-control" id="client">
+                  <option value="">SELECT CLIENT</option>
+                  <?php while ($row=mysqli_fetch_array($result)):;?>
+                  <option value="<?php echo $row[0];?>"  > <?php echo $row[7]; ?> </option>
+                <?php endwhile;?>
+                </select>
+              </div>
+    </td>
+    <td> <button type="submit"  id="data"  value="hh" name="de" class="btn btn-success">OK</button></form></td>
+
+    <td><form  method="post">
+      <div class="form-group">
+        <?php
+        $query="SELECT * FROM client_data";
+        $result=mysqli_query($conn,$query);
+         ?>
+        <select name="cl" class="form-control">
+          <option value="">SELECT OWNER</option>
+          <?php while ($row=mysqli_fetch_array($result)):;?>
+          <option value="<?php echo $row[0];?>"> <?php echo $row[8]; ?> </option>
+        <?php endwhile;?>
+        </select>
+      </div>
+    </td>
+
+    <td><button type="submit" value="hh" name="de" class="btn btn-success">OK</button>
+    </form></td>
+  </tr>
+</table>
+</div>
+</div>
+<!-- fetching_client_details_from_database -->
     <?php
     if (isset($_POST['de'])) {
       $id=$_POST['cl'];
-      $query="SELECT clint_data.*,bank.* FROM clint_data,bank WHERE clint_data.clint_id=$id AND bank.bank_id=clint_data.bank_id;";
+      $query="SELECT client_data.*,bank.* FROM client_data,bank WHERE client_data.client_id=$id AND bank.bank_id=client_data.bank_id;";
       $result=mysqli_query($conn,$query);
       $arr=mysqli_fetch_assoc($result);
     }
+
     else {
-      $query="SELECT clint_data.*,bank.* FROM clint_data,bank WHERE clint_data.clint_id=1 AND bank.bank_id=clint_data.bank_id;";
+      $query="SELECT client_data.*,bank.* FROM client_data,bank WHERE client_data.client_id=1 AND bank.bank_id=client_data.bank_id;";
       $result=mysqli_query($conn,$query);
       $arr=mysqli_fetch_assoc($result);
-
-
     }
    ?>
-<!-- end of fetcing clint data -->
+<!-- end of fetcing client data -->
 
 
   <!-- left panel view -->
     <div class="container-fluid">
       <div class="panel panel-primary" >
-        <div class="panel-heading" ><b> You Are Getting Data Of</b>  <label for="ClintName"><?php echo $arr['clint_name']; ?></label></div>
+        <div class="panel-heading" ><b> You Are Getting Data Of</b>  <label for="ClientName"><?php echo $arr['client_name']; ?></label></div>
           <div class="panel-body  d-print-block" id="div3">
               <div class="table-responsive" style="margin-top:20px;">
 
 
                 <h1 id="test" style="font-family: 'Martel'; text-align: center; font-weight: bold; font-size:25px; margin-top:10px; margin-bottom:10px;color:black ;">ALKA DESIGNERS AND BUILDERS</h1>
                 <hr style="border-top: 2px  solid black;  margin:0px;">
-                 <table class="table table-bordered" id="clintTbl">
+                 <table class="table table-bordered" id="clientTbl">
                          <tr>
                            <th>
                            <label for="Party_Name">Bank Name :</label>
@@ -230,10 +300,10 @@ border-top: 0px !important;
                          </tr>
                          <tr>
                            <th>
-                           <label for="Party_Name">Clint Name :</label>
+                           <label for="Party_Name">Client Name :</label>
                            </th>
                            <td>
-                             <?php echo $arr['clint_name']; ?>
+                             <?php echo $arr['client_name']; ?>
                            </td>
                            <th>
                            <label for="Party_Name">Owner Name :</label>
@@ -244,21 +314,22 @@ border-top: 0px !important;
                          </tr>
                          <tr>
                            <th>
-                           <label for="Party_Name">Clint Phone No :</label>
+                           <label for="Party_Name">Client Phone No :</label>
                            </th>
                            <td>
-                             <?php echo $arr['clint_phone']; ?>
+                             <?php echo $arr['client_phone']; ?>
                            </td>
                            <th>
-                           <label for="Party_Name">Clint LandLine Number :</label>
+                           <label for="Party_Name">Client LandLine Number :</label>
                            </th>
                            <td>
-                             <?php echo $arr['clint_tel_num']; ?>
+                             <?php echo $arr['client_tel_num']; ?>
                            </td>
                          </tr>
+
                  </table>
                   <p style="text-align:center; margin-bottom:0px;"><label>Available Documents :</label></p>
-                <table class="table table-bordered" id="clintTbl">
+                <table class="table table-bordered" id="clientTbl">
                   <hr style="border-top: 1px  solid black;  margin:0px;">
                                       <tr>
                                          <th>Sn.</th>
@@ -300,15 +371,78 @@ border-top: 0px !important;
                           <?php endif; ?>
                         </tr>
                       <?php endforeach; ?>
-
                 </table>
+<?php
+$kitta=explode(',', $arr['kitta']);
+$sqm=explode(',', $arr['area_sqm']);
+$sqf=explode(',', $arr['area_sqf']);
+$c=count($sqm);
+$i=0;
+ ?>
+
+<table table class="table table-bordered" id="clientTbl">
+        <hr style="border-top: 1px  solid black;  margin:0px;">
+<tr>
+  <th>Kitta</th>
+  <th>Area(sq.m)</th>
+  <th>Area(sq.f)</th>
+</tr>
+<?php while ($i<$c):; ?>
+<tr>
+<td><?php echo $kitta[$i]; ?></td>
+<td><?php echo $sqm[$i]; ?></td>
+<td><?php echo $sqf[$i]; ?></td>
+</tr>
+<?php $i++;  endwhile; ?>
+</table>
+
+<hr style="border-top: 2px  solid black;  margin:0px;">
+ <table class="table table-bordered" id="clientTbl">
+         <tr>
+           <th>
+           <label>Staff Name :</label>
+           </th>
+           <td>
+             <?php echo $arr['name_per_Ee']; ?>
+           </td>
+           <th>
+           <label for="Party_Name">Personal Expenditure :</label>
+           </th>
+           <td>
+             <?php echo $arr['amt_per_Ec']; ?>
+           </td>
+         </tr>
+         <tr>
+           <th>
+           <label>Staff Name :</label>
+           </th>
+           <td>
+             <?php echo $arr['name_off_Ee']; ?>
+           </td>
+           <th>
+           <label>Office Expenditure :</label>
+           </th>
+           <td>
+             <?php echo $arr['amt_off_Ee']; ?>
+           </td>
+         </tr>
+         <tr>
+           <th>
+           <label>Advance Collection(Total) :</label>
+           </th>
+           <td>
+             <?php echo $arr['totl_adv_col']; ?>
+           </td>
+           <th>
+           <label>Remaining Advance Collection :</label>
+           </th>
+           <td>
+             <?php echo $arr['rem_adv_amt']; ?>
+           </td>
+         </tr>
 
 
-
-
-
-
-
+</table>
                    <p><label>Temporary Address :</label> <?php echo $arr['temp_address']; ?></p>
                    <p><label>Permanent Address :</label> <?php echo $arr['perm_address']; ?></p>
                   <p><label>Advance Amount:</label> <?php echo $arr['advance_amount']; ?></p>
@@ -317,10 +451,9 @@ border-top: 0px !important;
                   <p style="text-decoration:overline; text-align:center; margin-top:20px;">Checked By</p>
                </div>
 
-
             </div>
               <div class="col text-center">
-  <button onclick="clint('div3')" type="submit" name="clint_submit" style="background-color: #00f300;" class="btn btn-default"><p style="font-family: 'Martel'; text-align: center; font-weight: bold; font-size:20px; margin:5px; color:blue ;">Print</p></button>
+  <button onclick="client('div3')" type="submit" name="client_submit" style="background-color: #00f300;" class="btn btn-default"><p style="font-family: 'Martel'; text-align: center; font-weight: bold; font-size:20px; margin:5px; color:blue ;">Print</p></button>
 </div>
           </div>
 
@@ -331,51 +464,6 @@ border-top: 0px !important;
   </div>
 </div>
 
-
-<div class="container-fluid">
-<div class="panel panel-primary">
-<div class="panel-heading"> <label for="ClintName">SELECT CLINT NAME</label>  </div>
-  <div class="panel-body">
-    <form  method="post">
-      <div class="form-group">
-        <?php
-        $query="SELECT * FROM clint_data";
-        $result=mysqli_query($conn,$query);
-         ?>
-        <select name="del" class="form-control">
-          <?php while ($row=mysqli_fetch_array($result)):;?>
-          <option value="<?php echo $row[0];?>" > <?php echo $row[7]; ?> </option>
-        <?php endwhile;?>
-        </select>
-      </div>
-      <button type="submit"  name="dele" class="btn btn-default">DELETE</button>
-    </form>
-    <?php
-    if (isset($_POST['dele'])) {
-    $delid=$_POST['del'];
-
-    $query="DELETE clint_data.*,office_data.* FROM clint_data INNER JOIN office_data ON clint_data.clint_id=office_data.clint_id WHERE clint_data.clint_id=$delid";
-    $resulte=mysqli_query($conn,$query);
-    if ($resulte) {
-      function function_alert($message) {
-
-          echo "<script>alert('$message');</script>";
-      }
-
-
-      // Function call
-      function_alert("Clint Data Has Been Deleted Successfully");
-    }
-    else {
-      echo "Record Not Found";
-    }
-    }
-   ?>
-
-  </div>
-</div>
-</div>
-
-
+</section>
   </body>
 </html>

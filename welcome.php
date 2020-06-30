@@ -40,7 +40,7 @@ font-weight: bold;
   }
 
 
-#clintfld
+#clientfld
 
 {
   border: 2px double #0008ff !important;
@@ -85,7 +85,7 @@ font-weight: bold;
   width:
 }
 
-  #clintTbl{
+  #clientTbl{
   width:100%;
   }
 
@@ -108,34 +108,56 @@ font-size:17px;
 color: #0008ff;
 }
 
+section{
+
+margin-top: 5%;
+
+}
+
 
   </style>
 
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="welcome.php?bname=Nepal%20Investment%20Bank%20Ltd">ALKA DESIGNERS AND BUILDERS</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    </div>
-       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="welcome.php?bname=Nepal%20Investment%20Bank%20Ltd">Home</a></li>
-            <li><a href="secondpage.php">OFFICIAL FORM</a></li>
-      </li>
-      <li><a href="users_display.php">PRINT INITIAL DATA</a></li>
-        <li><a href="final_official_display.php">PRINT FINAL DATA</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li style="color:red; font-size: 15px; font-family: 'Martel'; margin-top:19px;text-align:center; text-transform:uppercase;">WELCOME TO ADB</li>
-      <li><a href="logout.php?logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a></button> </li>
-    </ul>
-  </div><p></p>
-  </div>
-</nav>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="welcome.php?bname=Nepal%20Investment%20Bank%20Ltd">ALKA DESIGNERS AND BUILDERS</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="welcome.php?bname=Nepal%20Investment%20Bank%20Ltd"><span class="glyphicon glyphicon-list-alt" > IDE</span></a></li>
+          <li><a href="secondpage.php"><span class="glyphicon glyphicon-list-alt" > FDE</span></a></li>
+            <li><a href="users_display.php"><span class="glyphicon glyphicon-print"> PID</span></a></li>
+            <li><a href="final_official_display.php"><span class="glyphicon glyphicon-print"> PFD</span></a></li>
+            <li><a href="Update.php"><span  class="glyphicon glyphicon-pencil"> UPDATE</span></a></li>
+            <li><a href="statement.php"><span  class="glyphicon glyphicon-th-list">  STATEMENT</span></a></li>
+
+          <!-- <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DATA ENTRY <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="welcome.php?bname=Nepal%20Investment%20Bank%20Ltd">INITIAL DATA ENTRY</a></li>
+              <li><a href="secondpage.php">FINAL DATA ENTRY</a></li>
+            </ul>
+          </li> -->
+          <ul class="nav navbar-nav navbar-right" style="margin-left:100px;">
+            <li style="color:red; font-size: 15px; font-family: 'Martel'; margin-top:19px;text-align:center; text-transform:uppercase;">WELCOME TO ADB</li>
+            <li><a href="logout.php?logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a></button> </li>
+          </ul>
+
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
 <section>
   <div class="container-fluid">
           <div class="panel panel-primary">
@@ -155,13 +177,12 @@ color: #0008ff;
            });
            </script>
 
-         <!-- Left panel start form  -->
+         <!-- Top form start  -->
       <form  method="post"  id="cform">
      <fieldset id="bnkfield">
           <p style="font-family: 'Martel'; text-align: center; font-weight: bold; font-size:20px; margin:5px; color:#ff4700;">BANK DETAILS</p>
               <hr style="border-top: 1px  solid blue;  margin:0px;">
-       <div class="table-responsive">
-           <table class="table table-borderless">
+           <table class="table table-borderless table-responsive">
                  <tr>
                    <th>
                      <label for="Party_Name" >Bank Name:</label>
@@ -173,18 +194,18 @@ color: #0008ff;
                        ?>
                      <SELECT class="form-control" name="bankid">
                        <?php while($row = mysqli_fetch_array($result)):;?>
-                          <!-- $_GET['bname']==$row[1] it will print selected  -->
+
                          <option value="<?php echo $row[0]; ?>"><?php echo $row[1];?></option>
                              <?php endwhile;?>
                      </SELECT>
-                   </div>
+
                    </td>
                    <th>
 
                      <label for="Phone_No">Branch:</label>
                    </th>
                    <td>
-                      <input  type="tel"  class="form-control"  placeholder="Enter Branch Name" name="bank_tel_num" required >
+                      <input  type="text"  class="form-control"  placeholder="Enter Branch Name" name="bank_tel_num" required >
                    </td>
                  </tr>
                  <tr>
@@ -216,22 +237,22 @@ color: #0008ff;
                    </td>
 
                  </tr>
-
          </table>
-         </div>
      </fieldset>
+        <!-- top form end -->
 
-     <fieldset id="clintfld">
+<!-- client form start -->
+
+     <fieldset id="clientfld">
       <p style="font-family: 'Martel'; text-align: center; font-weight: bold; font-size:20px; margin:5px; color:#ff4700;">CLINT DETAILS</p>
            <hr style="border-top: 1px  solid blue; margin:0px;">
-          <div class="table-responsive">
-             <table class="table table-borderless" id="clintTbl">
+             <table class="table table-borderless table-responsive" id="clientTbl">
                <tr>
                  <th>
-                 <label for="Party_Name">Clint Name:</label>
+                 <label for="Party_Name">Client Name:</label>
                  </th>
                  <td>
-                   <input type="text" name="clint_name" placeholder="Clint Name" class="form-control" required>
+                   <input type="text" name="client_name" placeholder="Client Name" class="form-control" required>
                  </td>
                  <th>
                      <label for="Party_Name">Owner Name:</label>
@@ -250,13 +271,13 @@ color: #0008ff;
                        <label for="Phone_No">Phone No:</label>
                  </th>
                  <td>
-                       <input  type="tel"  pattern="^\d{10}$" class="form-control"  placeholder="Phone No" name="clint_phone" >
+                       <input  type="tel"  pattern="^\d{10}$" class="form-control"  placeholder="Phone No" name="client_phone" >
                  </td>
                  <th>
                        <label for="Phone_No">LandLine No:</label>
                  </th>
                  <td>
-                       <input  type="tel"  class="form-control"  placeholder="Landline Number" name="clint_tel_num">
+                       <input  type="tel"  class="form-control"  placeholder="Landline Number" name="client_tel_num">
                  </td>
                </tr>
                <tr>
@@ -274,13 +295,14 @@ color: #0008ff;
                 </td>
               </tr>
              </table>
+             <!-- document section start -->
              <fieldset id="docfield">
              <div class="form-group">
               <h5><p style="font-family: 'Martel'; text-align: center; font-weight: bold; font-size:20px; margin:5px; color:#ff4700;">DOCUMENTS ANALYSIS:</p><h5>
                <hr style="border-top: 1px dashed blue; margin:0px;">
                 <br>
                 <div class="table-responsive">
-                 <table class="table table-borderless" id="clintTb2">
+                 <table class="table table-borderless" id="clientTb2">
                    <tr>
                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;" ></i>Form Registration Certificate</th>
                      <td> <input type="checkbox" class="cr" value="Form Registration Certificate" class="custom-control-input" name="doc[]"></td>
@@ -291,7 +313,7 @@ color: #0008ff;
                    </tr>
                    <tr>
                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Proprietor/Organizer Citizen Certificate </th>
-                     <td><input type="checkbox" value="Proprietor Organizer Certificate" class="cr" name="doc[]"></td>
+                     <td><input type="checkbox" value="Proprietor/Organizer Citizen Certificate" class="cr" name="doc[]"></td>
                    </tr>
                    <tr>
                      <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Lal Purja (Land-ownership certificat)</th>
@@ -299,7 +321,7 @@ color: #0008ff;
                    </tr>
                     <tr>
                       <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Owner Citizenship</th>
-                      <td> <input type="checkbox" class="cr" value="Citizenship" class="custom-control-input" name="doc[]"></td>
+                      <td> <input type="checkbox" class="cr" value="Owner Citizenship" class="custom-control-input" name="doc[]"></td>
                     </tr>
                     <tr>
                       <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Land Tax Receipt</th>
@@ -308,7 +330,7 @@ color: #0008ff;
 
                     <tr>
                       <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Char Killa (Four boundary certificate from VDC/Municipality)</th>
-                      <td><input type="checkbox" value="Char Killa (Four boundary certificate)" class="cr" name="doc[]"></td>
+                      <td><input type="checkbox" value="Char Killa (Four boundary certificate from VDC/Municipality)" class="cr" name="doc[]"></td>
                     </tr>
 
                     <tr>
@@ -340,7 +362,7 @@ color: #0008ff;
                     </tr>
                     <tr>
                       <th><li style="list-style-type: none; margin-left:40px;"><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Rajinama Certificate</li></th>
-                      <td><input type="checkbox" value="Rajinama" class="cr" name="doc[]"> </td>
+                      <td><input type="checkbox" value="Rajinama Certificate" class="cr" name="doc[]"> </td>
                     </tr>
                     <tr>
                       <th><li style="list-style-type: none; margin-left:40px;"><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Ansh Bhanda Certificate</li></th>
@@ -367,19 +389,170 @@ color: #0008ff;
                       <th><i class="fas fa-angle-double-right" style="margin-right:20px; color:red;"></i>Building Completion Certificate (VDC/Municipality)</th>
                       <td><input type="checkbox" value="Building Completion Certificate(VDC/Municipality)" class="cr" name="doc[]"></td>
                     </tr>
-                    <tr>
-                      <td ><input type="text" name="doc[]" placeholder="Any Other Doc" class="form-control" style="margin-left:20px;"></td>
-                    </tr>
                  </table>
                </div>
              </div>
                 </fieldset>
+
+    <!-- document section end -->
+
+    <fieldset id="docfield">
+     <h5><p style="font-family: 'Martel'; text-align: center; font-weight: bold; font-size:20px; margin:5px; color:#ff4700;">Land Details:</p><h5>
+      <hr style="border-top: 1px dashed blue; margin:0px;">
+
+        <table  class="table table-borderless table-responsive">
+          <tr>
+            <th>Kitta</th>
+            <td><input type="text"  class="form-control" value="0"  name="kitta[]" ></td>
+            <td><input type="text"  class="form-control"  value="0" name="kitta[]"></td>
+            <td><input type="text"  class="form-control"  value="0" name="kitta[]"></td>
+            <td><input type="text"  class="form-control"  value="0" name="kitta[]" ></td>
+            <td><input type="text"  class="form-control"  value="0" name="kitta[]" ></td>
+            <td><input type="text"  class="form-control"  value="0" name="kitta[]" ></td>
+          </tr>
+          <tr>
+            <th>Area(Sq.m)</th>
+            <td><input type="text"  class="form-control" id="smb1" oninput="sqftConvert(this.value)"  onchange="sqftConvert(this.value)" value="0"  name="sqm[]" ></td>
+            <td><input type="text"  class="form-control" id="smb2"  oninput="sqft1Convert(this.value)"  onchange="sqft1Convert(this.value)" value="0"  name="sqm[]"  ></td>
+            <td><input type="text"  class="form-control" id="smb3"  oninput="sqft2Convert(this.value)"  onchange="sqft2Convert(this.value)"  value="0" name="sqm[]"></td>
+            <td><input type="text"  class="form-control" id="smb4"  oninput="sqft3Convert(this.value)"  onchange="sqft3Convert(this.value)" value="0" name="sqm[]"></td>
+            <td><input type="text" class="form-control" id="smb5"  oninput="sqft4Convert(this.value)"  onchange="sqft4Convert(this.value)" value="0" name="sqm[]"></td>
+            <td><input type="text"  class="form-control" id="smb6"  oninput="sqft5Convert(this.value)"  onchange="sqft5Convert(this.value)" value="0" name="sqm[]"></td>
+          </tr>
+          <tr>
+            <th>Area(Sq.ft)</th>
+            <td><input type="text"  class="form-control" oninput="sqmtConvert(this.value)"  onchange="sqmtConvert(this.value)"   id="sfb1" value="0" name="sqf[]"> </td>
+            <td><input type="text"  class="form-control" id="sfb2"  oninput="sqmt1Convert(this.value)"  onchange="sqmt1Convert(this.value)"     value="0" name="sqf[]" ></td>
+            <td><input type="text"  class="form-control" id="sfb3"  oninput="sqmt2Convert(this.value)"  onchange="sqmt2Convert(this.value)"    value="0" name="sqf[]" ></td>
+            <td><input type="text"  class="form-control" id="sfb4"  oninput="sqmt3Convert(this.value)"  onchange="sqmt3Convert(this.value)"    value="0" name="sqf[]"></td>
+            <td><input type="text"  class="form-control" id="sfb5"  oninput="sqmt4Convert(this.value)"  onchange="sqmt4Convert(this.value)"    value="0" name="sqf[]"></td>
+            <td><input type="text"  class="form-control" id="sfb6"  oninput="sqmt5Convert(this.value)"  onchange="sqmt5Convert(this.value)"    value="0" name="sqf[]"></td>
+          </tr>
+
+<script type="text/javascript">
+
+function sqftConvert(val) {
+  a=val*10.7639;
+  document.getElementById('sfb1').value=a;
+}
+
+function sqft1Convert(val) {
+  a=val*10.7639;
+  document.getElementById('sfb2').value=a;
+}
+
+
+function sqft2Convert(val) {
+  a=val*10.7639;
+  document.getElementById('sfb3').value=a;
+}
+
+function sqft3Convert(val) {
+  a=val*10.7639;
+  document.getElementById('sfb4').value=a;
+}
+function sqft4Convert(val) {
+  a=val*10.7639;
+  document.getElementById('sfb5').value=a;
+}
+function sqft5Convert(val) {
+  a=val*10.7639;
+  document.getElementById('sfb6').value=a;
+}
+
+
+
+function sqmtConvert(val) {
+  a=val*0.092903;
+  document.getElementById('smb1').value=a;
+
+}
+
+function sqm1tConvert(val) {
+  a=val*0.092903;
+  document.getElementById('sfb2').value=a;
+
+}
+
+
+function sqm2tConvert(val) {
+  a=val*0.092903;
+  document.getElementById('sfb3').value=a;
+
+}
+
+function sqm3tConvert(val) {
+  a=val*0.092903;
+  document.getElementById('sfb4').value=a;
+
+}
+function sqm4tConvert(val) {
+  a=val*0.092903;
+  document.getElementById('sfb5').value=a;
+
+}
+function sqm5tConvert(val) {
+  a=val*0.092903;
+  document.getElementById('sfb6').value=a;
+
+}
+</script>
+
+
+        </table>
+
+
+   </fieldset>
+
+
+   <fieldset id="docfield">
+    <h5><p style="font-family: 'Martel'; text-align: center; font-weight: bold; font-size:20px; margin:5px; color:#ff4700;">Advance Details:</p><h5>
+     <hr style="border-top: 1px dashed blue; margin:0px;">
+
+     <table  class="table table-borderless table-responsive">
+
+        <tr>
+          <th>Staff Name</th>
+          <td><input type="text"  class="form-control" placeholder="Enter Name Of Spender"  name="name_per_Ee"></td>
+          <th>Personal Expenditure</th>
+          <td><input type="number" id="per_exp" class="form-control" placeholder="Enter Amount Spent"   name="amt_per_Ec"></td>
+        </tr>
+        <tr>
+
+          <tr>
+            <th>Staff Name</th>
+            <td><input type="text"  class="form-control" placeholder="Enter Name Of Spender"   name="name_off_Ee"></td>
+            <th>Office Expenditure</th>
+            <td><input type="number"  id="off_Ee" class="form-control" placeholder="Enter Amount Spent"   name="amt_off_Ee"></td>
+          </tr>
+          <tr>
+            <th>Advance Collection</th>
+            <td><input type="number" id="adv_col"  oninput="remainingamount(this.value)" onchange="remainingamount(this.value)"   class="form-control" value="0"  name="totl_adv_col" ></td>
+
+            <th>Remaining Advance Collection</th>
+            <td><input type="number" id="rem_amt" class="form-control" value="0"  name="rem_adv_amt" ></td>
+           </tr>
+      </table>
+
+
+      <script type="text/javascript">
+        function remainingamount(val) {
+        var off_Ee= parseFloat(document.getElementById('off_Ee').value);
+        var per_Ee=parseFloat(document.getElementById('per_exp').value);
+        var rem= parseFloat(val)-(off_Ee+per_Ee);
+        document.getElementById('rem_amt').value=rem;
+        }
+      </script>
+    </fieldset>
+
+
+
                 <div class="table-responsive">
 
-                 <table class="table table-borderless" id="clintTb2">
+                 <table class="table table-borderless" id="clientTb2">
  <tr>
-   <th><label>Advance Amount (From Clint)</label></th>
-   <td ><input type="number" name="advance_amount" placeholder="Advance Amount Recived" class="form-control"></td>
+   <th><label>Advance Amount (From Client)</label></th>
+   <td ><input type="number" value="0" name="advance_amount" placeholder="Advance Amount Recived" class="form-control"></td>
    <th><label>Advance Reciver Name:</label></th>
    <td ><input type="text" name="advance_reciver_name" placeholder="Enter Advance Reciver Name" class="form-control"></td>
  </tr>
@@ -390,15 +563,22 @@ color: #0008ff;
 </table>
      </fieldset>
       <div class="col text-center">
-             <button type="submit" name="clint_submit" style="background-color: #00f300;" class="btn btn-default"><p style="font-family: 'Martel'; text-align: center; font-weight: bold; font-size:20px; margin:5px; color:blue ;">Submit</p></button>
+             <button type="submit" name="client_submit" style="background-color: #00f300;" class="btn btn-default"><p style="font-family: 'Martel'; text-align: center; font-weight: bold; font-size:20px; margin:5px; color:blue ;">Submit</p></button>
        </div>
            </form>
     </div>
-    </div>
-    </div>
-</div>
-</div>
 
-</div>
+<!-- client form end -->
+
+
+  </div> <!--./panel body-->
+
+    </div> <!--./panel panel-primary-->
+
+</div> <!--./container flued-->
+
+</section>
+
+
 </body>
 </html>
