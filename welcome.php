@@ -409,6 +409,12 @@ margin-top: 5%;
             <td><input type="text"  class="form-control"  value="0" name="kitta[]" ></td>
             <td><input type="text"  class="form-control"  value="0" name="kitta[]" ></td>
             <td><input type="text"  class="form-control"  value="0" name="kitta[]" ></td>
+            <td><input type="text"  class="form-control" value="0"  name="kitta[]" ></td>
+            <td><input type="text"  class="form-control"  value="0" name="kitta[]"></td>
+            <td><input type="text"  class="form-control"  value="0" name="kitta[]"></td>
+            <td><input type="text"  class="form-control"  value="0" name="kitta[]" ></td>
+            <td><input type="text"  class="form-control"  value="0" name="kitta[]" ></td>
+            <td><input type="text"  class="form-control"  value="0" name="kitta[]" ></td>
           </tr>
           <tr>
             <th>Area(Sq.m)</th>
@@ -418,15 +424,28 @@ margin-top: 5%;
             <td><input type="text"  class="form-control" id="smb4"  oninput="sqft3Convert(this.value)"  onchange="sqft3Convert(this.value)" value="0" name="sqm[]"></td>
             <td><input type="text" class="form-control" id="smb5"  oninput="sqft4Convert(this.value)"  onchange="sqft4Convert(this.value)" value="0" name="sqm[]"></td>
             <td><input type="text"  class="form-control" id="smb6"  oninput="sqft5Convert(this.value)"  onchange="sqft5Convert(this.value)" value="0" name="sqm[]"></td>
+            <td><input type="text"  class="form-control" id="smb7" oninput="sqft6Convert(this.value)"  onchange="sqft6Convert(this.value)" value="0"  name="sqm[]" ></td>
+            <td><input type="text"  class="form-control" id="smb8"  oninput="sqft7Convert(this.value)"  onchange="sqft7Convert(this.value)" value="0"  name="sqm[]"  ></td>
+            <td><input type="text"  class="form-control" id="smb9"  oninput="sqft8Convert(this.value)"  onchange="sqft8Convert(this.value)"  value="0" name="sqm[]"></td>
+            <td><input type="text"  class="form-control" id="smb10"  oninput="sqft9Convert(this.value)"  onchange="sqft9Convert(this.value)" value="0" name="sqm[]"></td>
+            <td><input type="text" class="form-control" id="smb11"  oninput="sqft10Convert(this.value)"  onchange="sqft10Convert(this.value)" value="0" name="sqm[]"></td>
+            <td><input type="text"  class="form-control" id="smb12"  oninput="sqft11Convert(this.value)"  onchange="sqft11Convert(this.value)" value="0" name="sqm[]"></td>
+
           </tr>
           <tr>
             <th>Area(Sq.ft)</th>
             <td><input type="text"  class="form-control" oninput="sqmtConvert(this.value)"  onchange="sqmtConvert(this.value)"   id="sfb1" value="0" name="sqf[]"> </td>
-            <td><input type="text"  class="form-control" id="sfb2"  oninput="sqmt1Convert(this.value)"  onchange="sqmt1Convert(this.value)"     value="0" name="sqf[]" ></td>
-            <td><input type="text"  class="form-control" id="sfb3"  oninput="sqmt2Convert(this.value)"  onchange="sqmt2Convert(this.value)"    value="0" name="sqf[]" ></td>
-            <td><input type="text"  class="form-control" id="sfb4"  oninput="sqmt3Convert(this.value)"  onchange="sqmt3Convert(this.value)"    value="0" name="sqf[]"></td>
-            <td><input type="text"  class="form-control" id="sfb5"  oninput="sqmt4Convert(this.value)"  onchange="sqmt4Convert(this.value)"    value="0" name="sqf[]"></td>
-            <td><input type="text"  class="form-control" id="sfb6"  oninput="sqmt5Convert(this.value)"  onchange="sqmt5Convert(this.value)"    value="0" name="sqf[]"></td>
+           <td><input type="text"  class="form-control" id="sfb2"  oninput="sqmt1Convert(this.value)"  onchange="sqmt1Convert(this.value)"     value="0" name="sqf[]" ></td>
+           <td><input type="text"  class="form-control" id="sfb3"  oninput="sqmt2Convert(this.value)"  onchange="sqmt2Convert(this.value)"    value="0" name="sqf[]" ></td>
+           <td><input type="text"  class="form-control" id="sfb4"  oninput="sqmt3Convert(this.value)"  onchange="sqmt3Convert(this.value)"    value="0" name="sqf[]"></td>
+           <td><input type="text"  class="form-control" id="sfb5"  oninput="sqmt4Convert(this.value)"  onchange="sqmt4Convert(this.value)"    value="0" name="sqf[]"></td>
+           <td><input type="text"  class="form-control" id="sfb6"  oninput="sqmt5Convert(this.value)"  onchange="sqmt5Convert(this.value)"    value="0" name="sqf[]"></td>
+           <td><input type="text"  class="form-control" oninput="sqmt6Convert(this.value)"  onchange="sqmt6Convert(this.value)"   id="sfb7" value="0" name="sqf[]"> </td>
+          <td><input type="text"  class="form-control" id="sfb8"  oninput="sqmt7Convert(this.value)"  onchange="sqmt7Convert(this.value)"     value="0" name="sqf[]" ></td>
+          <td><input type="text"  class="form-control" id="sfb9"  oninput="sqmt8Convert(this.value)"  onchange="sqmt8Convert(this.value)"    value="0" name="sqf[]" ></td>
+          <td><input type="text"  class="form-control" id="sfb10"  oninput="sqmt9Convert(this.value)"  onchange="sqmt9Convert(this.value)"    value="0" name="sqf[]"></td>
+          <td><input type="text"  class="form-control" id="sfb11"  oninput="sqmt10Convert(this.value)"  onchange="sqmt10Convert(this.value)"    value="0" name="sqf[]"></td>
+          <td><input type="text"  class="form-control" id="sfb12"  oninput="sqmt11Convert(this.value)"  onchange="sqmt11Convert(this.value)"    value="0" name="sqf[]"></td>
           </tr>
 
 <script type="text/javascript">
@@ -460,6 +479,35 @@ function sqft5Convert(val) {
   document.getElementById('sfb6').value=a;
 }
 
+function sqft6Convert(val) {
+  a=val*10.7639;
+  document.getElementById('sfb7').value=a;
+}
+
+function sqft7Convert(val) {
+  a=val*10.7639;
+  document.getElementById('sfb8').value=a;
+}
+
+
+function sqft8Convert(val) {
+  a=val*10.7639;
+  document.getElementById('sfb9').value=a;
+}
+
+function sqft9Convert(val) {
+  a=val*10.7639;
+  document.getElementById('sfb10').value=a;
+}
+function sqft10Convert(val) {
+  a=val*10.7639;
+  document.getElementById('sfb11').value=a;
+}
+function sqft11Convert(val) {
+  a=val*10.7639;
+  document.getElementById('sfb12').value=a;
+}
+
 
 
 function sqmtConvert(val) {
@@ -468,34 +516,74 @@ function sqmtConvert(val) {
 
 }
 
-function sqm1tConvert(val) {
+function sqmt1Convert(val) {
   a=val*0.092903;
-  document.getElementById('sfb2').value=a;
+  document.getElementById('smb2').value=a;
 
 }
 
 
-function sqm2tConvert(val) {
+function sqmt2Convert(val) {
   a=val*0.092903;
-  document.getElementById('sfb3').value=a;
+  document.getElementById('smb3').value=a;
 
 }
 
-function sqm3tConvert(val) {
+function sqmt3Convert(val) {
   a=val*0.092903;
-  document.getElementById('sfb4').value=a;
+  document.getElementById('smb4').value=a;
 
 }
-function sqm4tConvert(val) {
+function sqmt4Convert(val) {
   a=val*0.092903;
-  document.getElementById('sfb5').value=a;
+  document.getElementById('smb5').value=a;
 
 }
-function sqm5tConvert(val) {
+function sqmt5Convert(val) {
   a=val*0.092903;
-  document.getElementById('sfb6').value=a;
+  document.getElementById('smb6').value=a;
 
 }
+
+
+function sqmt6Convert(val) {
+  a=val*0.092903;
+  document.getElementById('smb7').value=a;
+
+}
+
+function sqmt7Convert(val) {
+  a=val*0.092903;
+  document.getElementById('smb8').value=a;
+
+}
+
+
+function sqmt8Convert(val) {
+  a=val*0.092903;
+  document.getElementById('smb9').value=a;
+
+}
+
+function sqmt9Convert(val) {
+  a=val*0.092903;
+  document.getElementById('smb10').value=a;
+
+}
+function sqmt10Convert(val) {
+  a=val*0.092903;
+  document.getElementById('smb11').value=a;
+
+}
+function sqmt11Convert(val) {
+  a=val*0.092903;
+  document.getElementById('smb12').value=a;
+
+}
+
+
+
+
 </script>
 
 
